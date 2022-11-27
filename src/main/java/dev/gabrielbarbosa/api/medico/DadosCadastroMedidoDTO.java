@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
-import org.springframework.validation.annotation.Validated;
 
 public record DadosCadastroMedidoDTO (
         @NotBlank
@@ -14,6 +13,8 @@ public record DadosCadastroMedidoDTO (
         @NotBlank
         @Email
         String email,
+        @NotBlank
+        String telefone,
         @NotBlank
         @Pattern(regexp = "\\d{4,6}")
         String crm,
