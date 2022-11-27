@@ -1,12 +1,10 @@
-package dev.gabrielbarbosa.api.entities;
+package dev.gabrielbarbosa.api.medico;
 
 import dev.gabrielbarbosa.api.endereco.Endereco;
-import dev.gabrielbarbosa.api.medico.Especialidade;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.util.Objects;
@@ -15,7 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Medico")
-@Table(name = "medicos")
+@Table(name = "tb_medicos")
 public class Medico {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +25,14 @@ public class Medico {
     private Especialidade especialidade;
     @Embedded
     private Endereco endereco;
+
+    public Medico(DadosCadastroMedidoDTO dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
+        this.endereco = new Endereco(dados.endereco());
+    }
 
     @Override
     public boolean equals(Object o) {
