@@ -1,7 +1,11 @@
-package dev.gabrielbarbosa.api.paciente;
+package dev.gabrielbarbosa.api.controller;
 
 import dev.gabrielbarbosa.api.medico.DadosCadastroMedidoDTO;
 import dev.gabrielbarbosa.api.medico.MedicoService;
+import dev.gabrielbarbosa.api.paciente.DadosAtualizarPacienteDTO;
+import dev.gabrielbarbosa.api.paciente.DadosCadastroPacienteDTO;
+import dev.gabrielbarbosa.api.paciente.DadosListagemPacienteDTO;
+import dev.gabrielbarbosa.api.paciente.PacienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
