@@ -28,4 +28,16 @@ public class PacienteController {
         return pacienteService.listarPacientes(paginacao);
     }
 
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody DadosAtualizarPacienteDTO dados) {
+        pacienteService.atualizar(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        pacienteService.excluir(id);
+    }
+
 }

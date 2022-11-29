@@ -23,4 +23,14 @@ public class PacienteService {
         return pacienteRepository.findAll(paginacao).map(DadosListagemPacienteDTO::new);
     }
 
+    public void atualizar(DadosAtualizarPacienteDTO dados) {
+        Paciente paciente = pacienteRepository.getReferenceById(dados.id());
+        paciente.atualizar(dados);
+    }
+
+    public void excluir(Long id) {
+        Paciente paciente = pacienteRepository.getReferenceById(id);
+        paciente.excluir();
+    }
+
 }
