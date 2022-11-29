@@ -29,6 +29,12 @@ public class MedicoController {
         return medicoService.listarMedicos(paginacao);
     }
 
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody DadosAtualizarMedicoDTO dados) {
+        medicoService.atualizarMedico(dados);
+    }
+
 
 
 }
