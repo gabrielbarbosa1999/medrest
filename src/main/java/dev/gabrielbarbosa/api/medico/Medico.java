@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Where;
 
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity(name = "Medico")
 @Table(name = "tb_medicos")
+@Where(clause = "ativo IS TRUE")
 public class Medico {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +24,9 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+
+    private boolean ativo;
+
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
     @Embedded
@@ -34,6 +39,7 @@ public class Medico {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
     }
 
     public void atualizar(DadosAtualizarMedicoDTO dados) {
@@ -46,6 +52,10 @@ public class Medico {
         if (dados.endereco() != null) {
             endereco.atualizar(dados.endereco());
         }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 
     @Override

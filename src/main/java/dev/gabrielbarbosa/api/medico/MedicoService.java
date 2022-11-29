@@ -30,4 +30,9 @@ public class MedicoService {
         medico.atualizar(dados);
     }
 
+    public void excluir(Long id) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
+    }
+
 }
